@@ -5,7 +5,7 @@ void main() {
   print("\n");
 
   // Item 2
-  List<String> item2Fruits = ["Aple", "Mango", "Orange"];
+  List<String> item2Fruits = ["Apple", "Mango", "Orange"];
 
   for (String fruit in item2Fruits) {
     print(fruit);

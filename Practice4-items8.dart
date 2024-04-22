@@ -10,7 +10,7 @@ void main() {
   ];
   print("===== WELCOME =====");
   print(
-      "Please type R if you want to remove task on the List, A to ass add on the List, V to view your List.");
+      "Please type R if you want to remove task on the List, A to add task on the List, V to view your List.");
 
   List<String> indicatorList = ["R", "A", "V", "EXIT"];
   String indicator = stdin.readLineSync()!.toUpperCase();

@@ -1,16 +1,16 @@
-void main() {
-  // Item 1
-  int Item1Num = 10;
+void itemOne() {
+  int item1Num = 10;
 
-  String OddEvenIndicator = Item1Num % 2 == 0
-      ? "The number $Item1Num is Even."
-      : "The number $Item1Num is Odd.";
+  String oddEvenIndicator = item1Num % 2 == 0
+      ? "The number $item1Num is Even."
+      : "The number $item1Num is Odd.";
 
-  print(OddEvenIndicator);
-  print("\n");
-  // Item 2
+  print(oddEvenIndicator);
+}
+
+void itemTwo() {
   String charactersOrWord = "JOrry";
-
+  charactersOrWord.toLowerCase();
   List<String> vowelLetters = ['a', 'e', 'i', 'o', 'u'];
 
   for (var character in charactersOrWord.runes) {
@@ -20,36 +20,36 @@ void main() {
 
     print("${String.fromCharCode(character)} is $indicator letter");
   }
-  print("\n");
-  // Item 3
+}
 
-  int Item3Num = 25;
+void itemThree() {
+  int item3Num = 25;
 
-  switch (Item3Num) {
+  switch (item3Num) {
     case < 0:
-      print("The number $Item3Num is Negative (-)");
+      print("The number $item3Num is Negative (-)");
       break;
     case == 0:
-      print("The number $Item3Num is Zero (0)");
+      print("The number $item3Num is Zero (0)");
       break;
     case > 0:
-      print("The number $Item3Num is Positive (+)");
+      print("The number $item3Num is Positive (+)");
       break;
     default:
-      print("Unidentified number $Item3Num");
+      print("Unidentified number $item3Num");
       break;
   }
-  print("\n");
+}
 
-  // Item 4
+void itemFour() {
   String item4MyName = "Bigar, Jorry G.";
 
   for (int i = 1; i <= 5; i++) {
     print("$item4MyName $i");
   }
-  print("\n");
+}
 
-  //Item 5
+void itemFive() {
   int item5Sum = 0, naturalNumber = 10;
 
   if (naturalNumber <= 0) {
@@ -61,10 +61,9 @@ void main() {
 
     print("The sum of natural number $naturalNumber is $item5Sum");
   }
+}
 
-  print("\n");
-
-  //Item 6
+void itemSix() {
   int item6num = 5;
   int item6Product = 0;
 
@@ -72,10 +71,9 @@ void main() {
     item6Product = item6num * i;
     print("$item6num x $i = $item6Product");
   }
+}
 
-  print("\n");
-
-  //Item 7
+void itemSeven() {
   int item7Num = 2;
   int item7Product = 0;
 
@@ -86,10 +84,9 @@ void main() {
       print("$i x $j = $item7Product");
     }
   }
+}
 
-  print("\n");
-
-  //Item 8
+void itemEight() {
   double item8num1 = 25, item8num2 = 5;
 
   double item8Sum = item8num1 + item8num2;
@@ -101,8 +98,9 @@ void main() {
   print("$item8num1 - $item8num2 = $item8Difference");
   print("$item8num1 * $item8num2 = $item8Product");
   print("$item8num1 / $item8num2 = $item8Quotient");
+}
 
-  // Item 9
+void itemNine() {
   for (int i = 0; i <= 100; i++) {
     if (i == 41) {
       continue;

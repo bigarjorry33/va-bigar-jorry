@@ -1,5 +1,4 @@
 import 'dart:math';
-import 'dart:typed_data';
 
 void main() {
   // Item 1
@@ -78,7 +77,7 @@ void showEvenNumbers([int number = 5]) {
     print("Number must be greater than 0");
   } else {
     print("The Even numbers of interval $number are:");
-    for (int i = 0; i < number; i++) {
+    for (int i = 0; i <= number; i++) {
       if (i % 2 == 0) {
         print(i);
       }

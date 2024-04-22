@@ -19,8 +19,7 @@ void main() {
 
   //Item 9
   String text = "Lorem  Ipsum";
-  print(
-      'Remove White Space: ${text.replaceAll(new RegExp(r"\s+\b|\b\s"), "")} \n');
+  print('Remove White Space: ${text.replaceAll(new RegExp(r"\s+"), "")} \n');
 
   //Item 10
   try {

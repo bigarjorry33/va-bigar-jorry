@@ -80,8 +80,8 @@ Future<int> multiplyByTwo(int num) {
 
 Future<String> itemTen(String inputString) async {
   inputString.trim();
-  await Future.delayed(
+  return Future.delayed(
       Duration(seconds: 1), () => inputString.split('').reversed.join(''));
   // return inputString.split('').reversed.join('');
-  return inputString;
+  // return inputString;
 }

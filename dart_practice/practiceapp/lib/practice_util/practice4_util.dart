@@ -1,4 +1,7 @@
 import 'dart:io';
+import 'package:practiceapp/constant/const_main.dart';
+import 'package:practiceapp/extension/ext_string.dart';
+import 'package:practiceapp/practiceapp.dart';
 
 void itemOne() {
   List<String> item1Name = ["Andres, Jose, Emillio"];
@@ -13,34 +16,54 @@ void itemTwo() {
   }
 }
 
-void itemThree() {
-  print("===== WELCOME =====");
-  stdout.write(
+void itemThree(String greetings) {
+  print(greetings);
+  print(
       "Please enter how many expenses items that you have. minumum of 1 and maximum of 10 items.");
-  int expensesCount = int.parse(stdin.readLineSync()!);
+  String expensesCount = inputNullValidation();
+
+  bool numeric = expensesCount.isNumeric();
+
+  if (numeric) {
+    int parsed = expensesCount.intParsing();
+
+    while (parsed < 1 || parsed > 10) {
+      print("The Number is not valid. minimum of 1 and maximum of 10");
+      print("Pleas input a valid number.");
+      expensesCount = inputNullValidation();
+    }
+    List<double> expensesList = [];
+
+    double sum = 0;
+
+    // repeatable input of data based on the number of data that the user wants.
+    print("Now, type your expenses amount to get your total expenses.");
+    for (var i = 0; i < parsed; i++) {
+      String expenses = inputNullValidation();
+
+      bool numeric = expenses.isNumeric();
+
+      while (!numeric) {
+        print(invalidNumber);
+        expenses = inputNullValidation();
+        numeric = expenses.isNumeric();
+      }
+
+      double parsed = expenses.doubleParsing();
+
+      expensesList.add(parsed);
+    }
+
+    //Get the sum of input data.
+    for (double expense in expensesList) {
+      sum += expense;
+    }
+    print("Your total expenses is $sum");
+  } else {
+    itemThree(invalidNumber);
+  }
 
   // Validation if the input number is valid.
-  while (expensesCount < 1 || expensesCount > 10) {
-    print("The Number is not valid. minimum of 1 and maximum of 10");
-    print("Pleas input a valid number.");
-    expensesCount = int.parse(stdin.readLineSync()!);
-  }
-  List<double> expensesList = [];
-
-  double sum = 0;
-
-  // repeatable input of data based on the number of data that the user wants.
-  print("Now, type your expenses amount to get your total expenses.");
-  for (var i = 0; i < expensesCount; i++) {
-    double expenses = double.parse(stdin.readLineSync()!);
-    expensesList.add(expenses);
-  }
-
-  //Get the sum of input data.
-  for (double expense in expensesList) {
-    sum += expense;
-  }
-  print("Your total expenses is $sum");
 }
 
 void itemFour() {
@@ -122,10 +145,9 @@ void itemEight() {
     "Test Data"
   ];
   print("===== WELCOME =====");
-  stdout.write(
+  print(
       "Please type R if you want to remove task on the List, A to add task on the List, V to view your List.");
 
-  List<String> indicatorList = ["R", "A", "V", "EXIT"];
   String indicator = stdin.readLineSync()!.toUpperCase();
 
   //Validation if the input data is valid
@@ -144,16 +166,29 @@ void itemEight() {
       showList(toDoList);
 
       print("Please type the number of task that you want to remove.");
-      int indexOfElement = int.parse(stdin.readLineSync()!) - 1;
+      // int indexOfElement = int.parse(stdin.readLineSync()!) - 1;
 
-      while (indexOfElement < 1 || indexOfElement > toDoList.length - 1) {
-        print("Invalid number of task.");
-        indexOfElement = int.parse(stdin.readLineSync()!) - 1;
+      String indexOfElement = inputNullValidation();
+
+      bool numeric = indexOfElement.isNumeric();
+
+      while (!numeric) {
+        print(invalidNumber);
+        indexOfElement = inputNullValidation();
+        numeric = indexOfElement.isNumeric();
       }
 
-      print("The '${toDoList[indexOfElement]}' was removed from the List");
+      int parsed = indexOfElement.intParsing() - 1;
 
-      toDoList.removeAt(indexOfElement);
+      while (parsed < 1 || parsed > toDoList.length - 1) {
+        print("Invalid number of task.");
+        indexOfElement = inputNullValidation();
+        parsed = indexOfElement.intParsing() - 1;
+      }
+
+      print("The '${toDoList[parsed]}' was removed from the List");
+
+      toDoList.removeAt(parsed);
 
       showList(toDoList);
       break;

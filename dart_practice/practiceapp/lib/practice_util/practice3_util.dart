@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:practiceapp/constant/const_main.dart';
 
 void itemOne() {
   print("Bigar, Jorry G.");
@@ -26,8 +27,6 @@ String itemFour(int len) {
     return "The lenth of the password must greater than 4 but less than 10";
   } else {
     var r = Random();
-    const chars =
-        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
     return List.generate(len, (index) => chars[r.nextInt(chars.length)]).join();
   }
 }

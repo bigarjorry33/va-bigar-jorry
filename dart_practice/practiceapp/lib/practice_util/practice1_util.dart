@@ -1,11 +1,10 @@
 // ignore_for_file: file_names
 import 'dart:io';
 
-extension StringExtension on String {
-  String capitalize() {
-    return "${this[0].toUpperCase()}${substring(1).toLowerCase()}";
-  }
-}
+import '../practiceapp.dart';
+import '../constant/const_main.dart';
+
+import 'package:practiceapp/extension/ext_string.dart';
 
 void itemOne() {
   print("Hello Jorry G. Bigar!");
@@ -17,8 +16,7 @@ void itemTwo() {
 }
 
 void itemThree() {
-  const int consNumber = 11;
-  print("The constant number that was declared is $consNumber");
+  print("The constant number that was declared is $sampleNumber");
 }
 
 void itemFour() {
@@ -37,17 +35,26 @@ void itemFour() {
 
 void itemFive() {
   stdout.write("Enter Number: ");
-  int? num1 = int.parse(stdin.readLineSync()!);
+  String num1 = inputNullValidation();
 
-  int square = num1 * num1;
-  print("The square of entered number is $square");
+  bool numeric = num1.isNumeric();
+
+  if (numeric) {
+    // num1 = int.parse(num1);
+    int parsed = num1.intParsing();
+    int square = parsed * parsed;
+    print("The square of entered number is $square");
+  } else {
+    print(invalidNumber);
+    itemFive();
+  }
 }
 
 void itemSix() {
   stdout.write("Enter your Firstname: ");
-  String? firstNameRaw = stdin.readLineSync()!;
+  String? firstNameRaw = inputNullValidation();
   stdout.write("Enter your Lastname: ");
-  String? lastNameRaw = stdin.readLineSync()!;
+  String? lastNameRaw = inputNullValidation();
 
   String firstName = firstNameRaw.capitalize();
   String lastName = lastNameRaw.capitalize();
@@ -76,8 +83,9 @@ void itemEight() {
 }
 
 void itemNine() {
-  String text = "Lo r em  I p sum";
-  print('Remove White Space: ${text.replaceAll(RegExp(r"\s+"), "")}');
+  String text = "   Lo r em  I p sum   ";
+  // print('Remove White Space: ${text.replaceAll(RegExp(r"\s+"), "")}');
+  print(text.trim());
 }
 
 void itemTen() {
@@ -87,7 +95,7 @@ void itemTen() {
 
     print("The converted value from String to Int is: $numericValue \n");
   } catch (msg) {
-    print("Something went wrong on converting string to int.\n $msg \n");
+    print("$errorHandlingMsg.\n $msg \n");
   }
 }
 
